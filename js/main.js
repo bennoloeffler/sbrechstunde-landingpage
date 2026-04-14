@@ -1,4 +1,4 @@
-// ── Topic popups ──
+// ── Topic hover tooltips ──
 (function () {
     var topics = {
         erp: {
@@ -19,40 +19,57 @@
         }
     };
 
-    var popup = document.getElementById('topic-popup');
-    var popupBg = document.getElementById('topic-popup-bg');
-    var popupClose = document.getElementById('topic-popup-close');
-    var popupTitle = document.getElementById('topic-popup-title');
-    var popupText = document.getElementById('topic-popup-text');
-    if (!popup) return;
+    var tooltip = document.getElementById('topic-tooltip');
+    var tooltipTitle = document.getElementById('topic-tooltip-title');
+    var tooltipText = document.getElementById('topic-tooltip-text');
+    if (!tooltip) return;
 
-    function openPopup(key) {
+    var hideTimeout;
+
+    function showTooltip(key, pillEl) {
         var t = topics[key];
         if (!t) return;
-        popupTitle.textContent = t.title;
-        popupText.innerHTML = t.text;
-        popup.classList.remove('opacity-0', 'pointer-events-none');
-        popup.querySelector('.topic-popup-card').classList.remove('scale-95');
-        document.body.style.overflow = 'hidden';
+        clearTimeout(hideTimeout);
+        tooltipTitle.textContent = t.title;
+        tooltipText.innerHTML = t.text;
+
+        // Position below the pill, centered
+        var rect = pillEl.getBoundingClientRect();
+        var tooltipWidth = Math.min(560, window.innerWidth * 0.9);
+        var left = rect.left + rect.width / 2 - tooltipWidth / 2;
+        // Keep within viewport
+        left = Math.max(8, Math.min(left, window.innerWidth - tooltipWidth - 8));
+        tooltip.style.top = (rect.bottom + 12) + 'px';
+        tooltip.style.left = left + 'px';
+        tooltip.style.width = tooltipWidth + 'px';
+
+        tooltip.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+        tooltip.classList.add('opacity-100', 'scale-100');
     }
 
-    function closePopup() {
-        popup.classList.add('opacity-0', 'pointer-events-none');
-        popup.querySelector('.topic-popup-card').classList.add('scale-95');
-        document.body.style.overflow = '';
+    function hideTooltip() {
+        hideTimeout = setTimeout(function () {
+            tooltip.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+            tooltip.classList.remove('opacity-100', 'scale-100');
+        }, 200);
     }
 
     document.querySelectorAll('.topic-pill').forEach(function (btn) {
+        btn.addEventListener('mouseenter', function () {
+            showTooltip(this.dataset.topic, this);
+        });
+        btn.addEventListener('mouseleave', hideTooltip);
+        // Also support tap on mobile
         btn.addEventListener('click', function () {
-            openPopup(this.dataset.topic);
+            showTooltip(this.dataset.topic, this);
         });
     });
 
-    popupBg.addEventListener('click', closePopup);
-    popupClose.addEventListener('click', closePopup);
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closePopup();
+    // Keep tooltip open when hovering over it
+    tooltip.addEventListener('mouseenter', function () {
+        clearTimeout(hideTimeout);
     });
+    tooltip.addEventListener('mouseleave', hideTooltip);
 })();
 
 // ── German public holidays (nationwide) ──
@@ -165,7 +182,7 @@ function dateToKey(date) {
         if (checked.size === 0) return;
 
         var dates = Array.from(checked)
-            .map(function (d) { return '  [ ] ' + d; })
+            .map(function (d) { return '  - ' + d; })
             .join('\n');
 
         var subject = encodeURIComponent('Anmeldung sBrech-Stunde');
