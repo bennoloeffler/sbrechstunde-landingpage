@@ -1,28 +1,53 @@
-# Vision
-mache eine Landingpage für eine sBrechstunde, also eine Sprechstunde, bei der man sich auskotzen kann - und auch ausbrechen kann.
-Ausbrechen im Sinne von: Aus dem typischen Denken.
+# sBrech-Stunde
 
-ERP
-KI
-Digitalisierung
+**Abkotzen. Ausbrechen. Aufbrechen.**
 
-Am Ende geht es um Leistung - also Wettbewerbsfähigkeit.
-Aber wie?
+Eine provokante Sprechstunde rund um ERP, KI, Digitalisierung und Wettbewerbsfähigkeit.
+Jeden Freitag, 16:00 - 17:00 Uhr.
 
-Immer Freitags von 16:00 bis 17:00 dort:
-hier: https://us02web.zoom.us/j/5500869820?pwd=UjZ4YWNJbXVEbHVGZk4vSGxQaUpMUT09
+**Live:** [bennoloeffler.github.io/sbrechstunde-landingpage](https://bennoloeffler.github.io/sbrechstunde-landingpage/)
 
-Vision der Webpage:
-Großartige Bilder - suche auf freien Portalen:
-- abkotzen
-- ausbrechen
-- aufbrechen
-Hero mit drei Bildern als überbeldnung.
-Dark-Mode.
+## Was ist das?
 
-Und ein einfacher Text:
-Abkotzen, ausbrechen und aufbrechen:
-Den Ärger als Motor nutzen, um zu verstehen wie es wirklich gehen könnte. Und dann anfangen. Etwas WIRKLICH und WIRKSAM anders machen. Darum gehts. Raus aus dem digitalen Käfig. Rein in echte Nützlichkeit.
+Den Ärger als Motor nutzen, um zu verstehen wie es wirklich gehen könnte.
+Und dann anfangen. Etwas WIRKLICH und WIRKSAM anders machen.
+Raus aus dem digitalen Käfig. Rein in echte Nützlichkeit.
 
+## Features
 
-Mache eine Webpage und hoste sie im github pages auf dem repository.
+- **Dark Mode Landing Page** mit drei Hero-Bildern im Cross-Fade
+- **Interaktive Themen-Pills** (ERP, KI/AI, Digitalisierung, Wettbewerbsfähigkeit) mit Popup-Overlays
+- **Automatische Terminliste** - zeigt die nächsten 4 Freitage, deutschlandweite Feiertage werden erkannt und als nicht wählbar markiert
+- **Mailto-Anmeldung** - ein Klick öffnet den Mail-Client mit vorausgefülltem Betreff und Terminen
+- **Hosted auf GitHub Pages** - kein Build-Schritt, kein Framework
+
+## Tech Stack
+
+- HTML / CSS / JavaScript (vanilla)
+- [Tailwind CSS](https://tailwindcss.com/) via CDN
+- [Bitter](https://fonts.google.com/specimen/Bitter) (Display Font) + [Inter](https://fonts.google.com/specimen/Inter) (Body Font)
+- Bilder von [Unsplash](https://unsplash.com/) und [Pexels](https://www.pexels.com/) (frei nutzbar)
+
+## Lokale Entwicklung
+
+```bash
+# Einfach index.html im Browser öffnen - kein Build nötig.
+# Oder mit Live Server (VS Code Extension):
+# Rechtsklick auf index.html -> "Open with Live Server"
+```
+
+## Struktur
+
+```
+.
+├── index.html          # Single-Page Landing Page
+├── css/style.css       # Hero Cross-Fade, Grain, Animationen
+├── js/main.js          # Termin-Generator, Feiertags-Filter, Topic-Popups
+├── img/                # Platzhalter für lokale Bilder
+├── .nojekyll           # GitHub Pages: Jekyll deaktivieren
+└── CLAUDE.md           # Kontext für Claude Code
+```
+
+## Kontakt
+
+Florian Glöbl - [f.gloebl@g-u-p.de](mailto:f.gloebl@g-u-p.de)
