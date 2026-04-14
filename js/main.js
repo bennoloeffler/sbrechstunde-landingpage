@@ -1,3 +1,60 @@
+// ── Topic popups ──
+(function () {
+    var topics = {
+        erp: {
+            title: 'ERP',
+            text: 'ERP soll Firmen besser machen. Schneller. Weniger Arbeit. Wettbewerbsfähiger. <strong class="text-white">ABER:</strong> stattdessen. Mehr unnötiger Scheißdreck ohne nennenswerten Nutzen. Mitarbeiter sind behindert. Kunden sind empört. <strong class="text-red-400">DAS SOLL GUT SEIN?</strong>'
+        },
+        ki: {
+            title: 'KI / AI',
+            text: 'Riesiger Hype. Alle reden über Sicherheit. Alle reden über Arbeitsplatzverlust. Firmen erproben und erzwingen viel. <strong class="text-red-400">Aber ES NÜTZT JA NICHTS</strong> — wie kann denn das sein?'
+        },
+        digi: {
+            title: 'Digitalisierung',
+            text: 'Seit Jahren geben wir Geld für bessere Software und mehr Durchgängigkeit und mehr automatisierte Abläufe aus. Aber es wird ja nicht besser. <strong class="text-red-400">Das Verhältnis zwischen \'Geld ausgeben\' und \'Nutzen einfahren\' ist dramatisch schlecht.</strong>'
+        },
+        wettbewerb: {
+            title: 'Wettbewerbsfähigkeit',
+            text: 'Was müsste man <strong class="text-white">anders denken</strong>, <strong class="text-white">anders machen</strong>, <strong class="text-white">anders angehen</strong>, damit das Spiel nützlich wird?'
+        }
+    };
+
+    var popup = document.getElementById('topic-popup');
+    var popupBg = document.getElementById('topic-popup-bg');
+    var popupClose = document.getElementById('topic-popup-close');
+    var popupTitle = document.getElementById('topic-popup-title');
+    var popupText = document.getElementById('topic-popup-text');
+    if (!popup) return;
+
+    function openPopup(key) {
+        var t = topics[key];
+        if (!t) return;
+        popupTitle.textContent = t.title;
+        popupText.innerHTML = t.text;
+        popup.classList.remove('opacity-0', 'pointer-events-none');
+        popup.querySelector('.topic-popup-card').classList.remove('scale-95');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+        popup.classList.add('opacity-0', 'pointer-events-none');
+        popup.querySelector('.topic-popup-card').classList.add('scale-95');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.topic-pill').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            openPopup(this.dataset.topic);
+        });
+    });
+
+    popupBg.addEventListener('click', closePopup);
+    popupClose.addEventListener('click', closePopup);
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closePopup();
+    });
+})();
+
 // ── German public holidays (nationwide) ──
 // Returns Set of "YYYY-MM-DD" strings for a given year
 function getGermanHolidays(year) {
