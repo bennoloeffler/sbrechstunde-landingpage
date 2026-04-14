@@ -10,6 +10,7 @@ Am Ende geht es um Leistung - also Wettbewerbsfähigkeit.
 Aber wie?
 
 Immer Freitags von 16:00 bis 17:00 dort:
+hier: https://us02web.zoom.us/j/5500869820?pwd=UjZ4YWNJbXVEbHVGZk4vSGxQaUpMUT09
 
 Vision der Webpage:
 Großartige Bilder - suche auf freien Portalen:
@@ -24,4 +25,4 @@ Abkotzen, ausbrechen und aufbrechen:
 Den Ärger als Motor nutzen, um zu verstehen wie es wirklich gehen könnte. Und dann anfangen. Etwas WIRKLICH und WIRKSAM anders machen. Darum gehts. Raus aus dem digitalen Käfig. Rein in echte Nützlichkeit.
 
 
-Mache eine Webpage und hoste sie im 
+Mache eine Webpage und hoste sie im github pages auf dem repository.
