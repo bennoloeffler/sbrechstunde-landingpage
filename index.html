@@ -174,8 +174,28 @@
 
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-neutral-800/30 text-center text-neutral-600 text-sm">
-        <p>&copy; 2026 sBrechstunde</p>
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-4">
+            <a href="https://www.g-u-p.de/impressum" target="_blank" rel="noopener"
+               class="hover:text-neutral-300 transition-colors">Impressum</a>
+            <a href="https://www.g-u-p.de/datenschutz" target="_blank" rel="noopener"
+               class="hover:text-neutral-300 transition-colors">Datenschutz</a>
+            <button id="cookie-settings-btn" class="hover:text-neutral-300 transition-colors cursor-pointer">Cookie-Einstellungen</button>
+        </nav>
+        <p>&copy; 2026 sBrech-Stunde &middot; <a href="https://www.g-u-p.de" target="_blank" rel="noopener" class="hover:text-neutral-300 transition-colors">G&amp;UP</a></p>
     </footer>
+
+    <!-- Cookie banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[200] p-4 md:p-6 bg-neutral-900/95 backdrop-blur-md border-t border-neutral-800 translate-y-full transition-transform duration-500">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-4">
+            <p class="text-neutral-300 text-sm md:text-base leading-relaxed flex-1">
+                Diese Seite nutzt keine Tracking-Cookies. Nur technisch notwendige Speicherung im Browser.
+                Mehr dazu in der <a href="https://www.g-u-p.de/datenschutz" target="_blank" rel="noopener" class="text-red-400 hover:text-red-300 underline">Datenschutzerklärung</a>.
+            </p>
+            <div class="flex gap-3 flex-shrink-0">
+                <button id="cookie-accept" class="px-5 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-sm font-medium transition-colors">OK</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Hover tooltip (fixed, above everything) -->
     <div id="topic-tooltip" class="fixed opacity-0 pointer-events-none transition-all duration-300 scale-95 max-w-xl w-[90vw]" style="z-index: 9999;">

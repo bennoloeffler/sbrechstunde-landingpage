@@ -1,3 +1,38 @@
+// ── Cookie banner ──
+(function () {
+    var banner = document.getElementById('cookie-banner');
+    var acceptBtn = document.getElementById('cookie-accept');
+    var settingsBtn = document.getElementById('cookie-settings-btn');
+    if (!banner) return;
+
+    var STORAGE_KEY = 'sbrechstunde-cookie-ack';
+
+    function showBanner() {
+        banner.classList.remove('translate-y-full');
+    }
+
+    function hideBanner() {
+        banner.classList.add('translate-y-full');
+    }
+
+    // Show on first visit
+    if (!localStorage.getItem(STORAGE_KEY)) {
+        setTimeout(showBanner, 600);
+    }
+
+    acceptBtn.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, '1');
+        hideBanner();
+    });
+
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', function () {
+            localStorage.removeItem(STORAGE_KEY);
+            showBanner();
+        });
+    }
+})();
+
 // ── Topic hover tooltips ──
 (function () {
     var topics = {
